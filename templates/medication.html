@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,8 +7,16 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'new.css' %}">
 </head>
 <body>
-    <h2> All medications </h2>
+    {% if medications|length == 0 %}
+        <h2>You have no medication</h2>
+    {% else %}
+        <h2>Number of medications: {{ medications|length }}</h2>
+        {% for medication in medications %}
+        <h2>{{ medication.name_of_medication }}</h2>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>

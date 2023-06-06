@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Medication
+
 
 def all_medications(request):
-    # return HttpResponse("Test")
-    return render(request, 'medication.html')
+    #all = Medication.objects.all()
+    all = []
+    return render(request, 'medication.html', {'medications': all})
 
