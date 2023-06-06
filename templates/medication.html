@@ -12,10 +12,18 @@
 <body>
     {% if medications|length == 0 %}
         <h2>You have no medication</h2>
+        <a href="{% url 'new_medication' %}">Add medication</a>
     {% else %}
-        <h2>Number of medications: {{ medications|length }}</h2>
+        <h1>Number of medications: {{ medications|length }}</h1>
+        <a href="{% url 'new_medication' %}">Add medication</a>
+        <br><br>
         {% for medication in medications %}
         <h2>{{ medication.name_of_medication }}</h2>
+        <h3>Capacity: {{ medication.capacity }}</h3>
+        <a href="{% url 'update_medication' medication.id %}">Update</a>
+        <a href="{% url 'delete_medication' medication.id %}">Delete</a>
+        <br>
+        <br>
         {% endfor %}
     {% endif %}
 </body>
