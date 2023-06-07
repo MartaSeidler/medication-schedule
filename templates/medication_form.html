@@ -1,11 +1,12 @@
 {% extends 'main.html' %}
+{% load bootstrap %}
 
 {% block title %} Form {% endblock %}
 
 {% block page %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form }}
+        {{ form|bootstrap }}
         <button type="submit">Add medication</button>
     </form>
     <a href="{% url 'all_medications' %}">Back</a>
