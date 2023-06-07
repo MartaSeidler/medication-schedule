@@ -1,15 +1,16 @@
-{% load static %}
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'new.css' %}">
-</head>
-<body>
+{% extends 'main.html' %}
+
+{% block title %} All mediactions {% endblock %}
+
+{% block page %}
+    {% if user.is_authenticated %}
+        Hello, {{ user.username }} <br>
+        <a href="{% url 'logout' %}">Logout</a>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+    <hr>
+
     {% if medications|length == 0 %}
         <h2>You have no medication</h2>
         <a href="{% url 'new_medication' %}">Add medication</a>
@@ -26,5 +27,4 @@
         <br>
         {% endfor %}
     {% endif %}
-</body>
-</html>
+{% endblock %}

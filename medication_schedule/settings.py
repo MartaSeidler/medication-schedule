@@ -121,6 +121,10 @@ STATICFILES_DIR = ['my_static']
 MEDIA_URL = '/media/'
 MEDIA_ROOT = 'my_media'
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'all_medications'
+LOGOUT_REDIRECT_URL = 'login'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
