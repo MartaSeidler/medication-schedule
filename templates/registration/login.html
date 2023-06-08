@@ -4,9 +4,16 @@
 {% block title %} Login {% endblock %}
 
 {% block page %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        <button type="submit">Login</button>
-    </form>
+
+
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <form method="post">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <button type="submit">Login</button>
+        </form>
+      </div>
+    </div>
 {% endblock %}
