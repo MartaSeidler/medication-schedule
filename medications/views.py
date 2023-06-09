@@ -16,7 +16,7 @@ def new_medication(request):
         form.save()
         return redirect(all_medications)
 
-    return render(request, 'medication_form.html', {'form': form})
+    return render(request, 'medication_form.html', {'form': form, 'new': True})
 
 @login_required
 def update_medication(request, id):
@@ -28,7 +28,7 @@ def update_medication(request, id):
         medication.save()
         return redirect(all_medications)
 
-    return render(request, 'medication_form.html', {'form': form})
+    return render(request, 'medication_form.html', {'form': form, 'new': False})
 
 @login_required
 def delete_medication(request, id):

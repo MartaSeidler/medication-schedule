@@ -1,4 +1,7 @@
 body {
     padding: 2rem;
-    color: teal;
+}
+.medication-picture{
+    width: 50px;
+    float: left;
 }
