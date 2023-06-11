@@ -19,7 +19,7 @@
         <a href="{% url 'new_medication' %}">Add medication</a>
         <br><br>
         {% for medication in medications %}
-            <div class="card" style="width: 32rem;">
+            <div class="card" style="width: 26rem; background-color: whitesmoke;">
               <div class="card-body">
                   <img src="/media/{{ medication.picture }}" class="medication-picture">
                 <div class="row">

@@ -7,12 +7,14 @@
 
 
     <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">Login</h5>
+      <div class="card-body" style="background-color: snow;">
+        <h5 class="card-title"><i class="fa-solid fa-user"></i> Login</h5>
+        <br>
         <form method="post">
             {% csrf_token %}
             {{ form|bootstrap }}
-            <button type="submit">Login</button>
+            <br>
+            <button type="submit" class="btn btn-primary" style="float: right;">Login <i class="fa-solid fa-right-to-bracket"></i></button>
         </form>
       </div>
     </div>

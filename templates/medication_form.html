@@ -4,14 +4,19 @@
 {% block title %} Form {% endblock %}
 
 {% block page %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|bootstrap }}
-        {% if nowy %}
-            <button type="submit">Add medication</button>
-        {% else %}
-            <button type="submit">Edit medication</button>
-        {% endif %}
-    </form>
-    <a href="{% url 'all_medications' %}">Back</a>
+<div class="card" style="width: 32rem;">
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|bootstrap }}
+            <br>
+            {% if new %}
+                <button type="submit" class="btn btn-success">Add medication</button>
+            {% else %}
+                <button type="submit" class="btn btn-success">Edit medication</button>
+            {% endif %}
+        </form>
+        <a href="{% url 'all_medications' %}"><button class="btn btn-secondary" >Back</button></a>
+    </div>
+</div>
 {% endblock %}

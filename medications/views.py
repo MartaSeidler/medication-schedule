@@ -22,7 +22,7 @@ def new_medication(request):
 def update_medication(request, id):
     medication = get_object_or_404(Medication, pk=id)
 
-    form = MedicationForm(request.POST or None, request.FILES or None, instance=Medication)
+    form = MedicationForm(request.POST or None, request.FILES or None, instance=medication)
 
     if form.is_valid():
         medication.save()
