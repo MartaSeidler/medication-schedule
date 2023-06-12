@@ -15,7 +15,6 @@
         <h2>You have no medication</h2>
         <a href="{% url 'new_medication' %}">Add medication</a>
     {% else %}
-<!--        <h1>Number of medications: {{ medications|length }}</h1>-->
         <a href="{% url 'new_medication' %}">Add medication</a>
         <br><br>
         {% for medication in medications %}

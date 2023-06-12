@@ -1,12 +1,14 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Medication
+from .models import Medication, Capacity
 from .forms import MedicationForm
 from django.contrib.auth.decorators import login_required
+
 
 @login_required
 def all_medications(request):
     all = Medication.objects.all()
     return render(request, 'medication.html', {'medications': all})
+
 
 @login_required
 def new_medication(request):
@@ -17,6 +19,7 @@ def new_medication(request):
         return redirect(all_medications)
 
     return render(request, 'medication_form.html', {'form': form, 'new': True})
+
 
 @login_required
 def update_medication(request, id):
@@ -29,6 +32,7 @@ def update_medication(request, id):
         return redirect(all_medications)
 
     return render(request, 'medication_form.html', {'form': form, 'new': False})
+
 
 @login_required
 def delete_medication(request, id):

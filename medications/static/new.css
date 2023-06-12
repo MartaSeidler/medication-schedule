@@ -1,6 +1,5 @@
-body {
-    margin-left: auto;
-    margin-right: auto;
+body{
+    padding: 2rem;
 }
 .medication-picture{
     width: 100px;
