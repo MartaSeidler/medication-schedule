@@ -13,9 +13,9 @@
 
     {% if medications|length == 0 %}
         <h2>You have no medication</h2>
-        <a href="{% url 'new_medication' %}">Add medication</a>
+        <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add medication</button></a>
     {% else %}
-        <a href="{% url 'new_medication' %}">Add medication</a>
+        <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add medication</button></a>
         <br><br>
         {% for medication in medications %}
             <div class="card" style="width: 26rem; background-color: whitesmoke;">
@@ -26,12 +26,19 @@
                         <h5 class="card-title">{{ medication.name_of_medication }}</h5>
                     </div>
                     <div class="col-3">
-                        <a href="{% url 'update_medication' medication.id %}"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <a href="{% url 'delete_medication' medication.id %}"><i class="fa-solid fa-trash"></i></a>
+                        <a href="{% url 'update_medication' medication.id %}"><i class="fa-solid fa-pen-to-square" style="color: #80ceff"></i></a>
+                        <a href="{% url 'delete_medication' medication.id %}"><i class="fa-solid fa-trash" style="color: #80ceff"></i></a>
                     </div>
                 </div>
                 <div class="row">
-                    <p class="card-text">Capacity: {{ medication.capacity }}</p>
+                    <p>{{ medication.dosage }} {{ medication.unit}} x {{ medication.times_per_day }} times per day</p>
+                </div>
+                <div class="row">
+                    {% for n in medication.times_per_day|length %}
+                    <div class="col-3">
+                        <button type="button" class="btn btn-light"><i class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+                    </div>
+                    {% endfor %}
                 </div>
               </div>
             </div>
