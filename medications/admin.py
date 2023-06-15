@@ -9,4 +9,3 @@ class MedicationAdmin(admin.ModelAdmin):
     search_fields = ['name_of_medication']
 
 
-# admin.site.register(Capacity)

@@ -3,69 +3,69 @@
 {% block title %} All mediactions {% endblock %}
 
 {% block page %}
-    {% if user.is_authenticated %}
-    <div class="card" style="width: 26rem">
+{% if user.is_authenticated %}
+    <div class="card" style="width: 36rem">
         <div class="card-header">
             Hello, {{ user.username }}
         </div>
         <div class="card-body">
             <h5 class="card-title" style="text-align: center">Your medication schedule</h5><br>
-<!--            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
             <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
-         </div>
+        </div>
     </div>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-    <hr>
-
-
-    {% if medications|length == 0 %}
-        <h2>You have no medication</h2>
-        <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add medication</button></a>
-    {% else %}
-        <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add medication</button></a>
-        <br><br>
-        {% for medication in medications %}
-
-            <div class="card" style="width: 26rem; background-color: white; border: 2px solid; border-color: #708090">
-              <div class="card-body">
-                  <img src="/media/{{ medication.picture }}" class="medication-picture">
-                <div class="row">
-                    <div class="col-9">
-                        <h5 class="card-title">{{ medication.name_of_medication }}</h5>
-                    </div>
-                    <div class="col-3">
-                        <a href="{% url 'update_medication' medication.id %}"><i class="fa-solid fa-pen-to-square" style="color: #696969"></i></a>
-                        <a href="{% url 'delete_medication' medication.id %}"><i class="fa-solid fa-trash" style="color: #696969"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <p>{{ medication.time }} </p>
-                </div>
-                <div class="row">
-
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-                    </div>
-                    <div class="col-3">
-                        <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-                    </div>
-                    <p></p>
-                    <div class="row">
-                        <p>{{ medication.dosage }} {{ medication.unit}} </p>
-                    </div>
-                </div>
-              </div>
+{% else %}
+    <a href="{% url 'login' %}">Login</a>
+{% endif %}
+<hr>
+{% if medications|length == 0 %}
+    <h2>You have no medication</h2>
+    <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add
+        medication</button></a>
+{% else %}
+    <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add
+        medication</button></a>
+<br><br>
+{% for medication in medications %}
+<div class="card" style="width: 26rem; background-color: white; border: 2px solid; border-color: #708090">
+    <div class="card-body">
+        <img src="/media/{{ medication.picture }}" class="medication-picture">
+        <div class="row">
+            <div class="col-9">
+                <h5 class="card-title">{{ medication.name_of_medication }}</h5>
             </div>
-            <br>
+            <div class="col-3">
+                <a href="{% url 'update_medication' medication.id %}"><i class="fa-solid fa-pen-to-square"
+                                                                         style="color: #696969"></i></a>
+                <a href="{% url 'delete_medication' medication.id %}"><i class="fa-solid fa-trash"
+                                                                         style="color: #696969"></i></a>
+            </div>
+        </div>
+        <div class="row">
+            <p>{{ medication.time }} {{ medication.dosage }} {{ medication.unit}} </p>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
+                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
+                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
+                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+            </div>
+            <div class="col-3">
+                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
+                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 
-        {% endfor %}
-    {% endif %}
+{% endfor %}
+{% endif %}
+
 {% endblock %}

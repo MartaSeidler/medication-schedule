@@ -3,10 +3,23 @@
 {% block title %} Accept {% endblock %}
 
 {% block page %}
-    <h1>Do you want to delete {{medication.name_of_medication}}?</h1>
-    <form method=""post">
-    {% csrf_token %}
-        <button type="submit">Yes</button>
-    </form>
-    <a href="{% url 'all_medications' %}">Back</a>
+
+    <div class="card text-center" style="width: 36rem">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center">Do you want to delete {{medication.name_of_medication}}?</h5>
+            <hr><br>
+            <div class="row">
+                <div class="col">
+                    <a href="{% url 'all_medications' %}" class="btn btn-secondary">Back</a>
+                </div>
+                <div class="col">
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
