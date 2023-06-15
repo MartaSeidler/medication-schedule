@@ -9,7 +9,7 @@
             Hello, {{ user.username }}
         </div>
         <div class="card-body">
-            <h5 class="card-title">Your medication schedule</h5><br>
+            <h5 class="card-title" style="text-align: center">Your medication schedule</h5><br>
 <!--            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
             <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
          </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <p>{{ medication.dosage }} {{ medication.unit}} x {{ medication.times_per_day }} times per day</p>
+                    <p>{{ medication.time }} </p>
                 </div>
                 <div class="row">
 
@@ -57,12 +57,15 @@
                     <div class="col-3">
                         <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i class="fa-solid fa-pills" style="color: #80ceff"></i></button>
                     </div>
-
+                    <p></p>
+                    <div class="row">
+                        <p>{{ medication.dosage }} {{ medication.unit}} </p>
+                    </div>
                 </div>
               </div>
             </div>
+            <br>
 
-        <br>
         {% endfor %}
     {% endif %}
 {% endblock %}
