@@ -1,6 +1,5 @@
 # Medication Schedule
 
-
 ### Concept 
 Medication Schedule is a web application designed to medication management. Once logged in, you can schedule and track medication doses and timings. <br> 
 The application is currently in production.
@@ -30,11 +29,9 @@ The application is currently in production.
 - Bootstrap
 - Fontawesome
 
-
 ### Requirements and installation
 <em>Under construction</em>
 <br><br>
-
 
 #### I am making this project for a contest on the Discord channel [Zaprogramuj Życie](https://discord.com/invite/zaprogramujzycie)
 While working on this application, I started learning Django, HTML and CSS.
