@@ -1,8 +1,6 @@
 # Medication Schedule
 
 
-<hr>
-
 ### Concept 
 Medication Schedule is an intuitive web application designed to medication management. Once logged in, you can schedule and track medication doses and timings. <br> 
 The application is currently in production.
