@@ -4,15 +4,27 @@
 <hr>
 
 ### Concept 
-Medication Schedule is an intuitive web application designed to medication management for every member of your family. Once logged in, you can schedule and track medication doses and timings for each individual. <br> 
+Medication Schedule is an intuitive web application designed to medication management. Once logged in, you can schedule and track medication doses and timings. <br> 
 The application is currently in production.
 
 <br>
+
+### Schedule screen:
 <p align="center">
-  <img src="./screenshot.png" width="350" title="screenshot">
+  <img src="./screenshot.png" width=520px title="screenshot">
 </p>
 
-### Used technology
+### Form screen: 
+<p align="center">
+  <img src="./screenshot_form.png" width=520px title="screenshot">
+</p>
+
+### Login screen: 
+<p align="center">
+  <img src="./screenshot_login.png" width=520px title="screenshot">
+</p>
+
+### Used technology:
 - Python
 - Django
 - HTML

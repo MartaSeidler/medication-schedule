@@ -3,69 +3,96 @@
 {% block title %} All mediactions {% endblock %}
 
 {% block page %}
+
 {% if user.is_authenticated %}
-    <div class="card" style="width: 36rem">
-        <div class="card-header">
-            Hello, {{ user.username }}
-        </div>
-        <div class="card-body">
-            <h5 class="card-title" style="text-align: center">Your medication schedule</h5><br>
-            <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
-        </div>
+<div class="card" style="width: 45rem">
+    <div class="card-header" style="text-align: center">
+        <h5>Your medication</h5>
     </div>
-{% else %}
-    <a href="{% url 'login' %}">Login</a>
-{% endif %}
-<hr>
-{% if medications|length == 0 %}
-    <h2>You have no medication</h2>
-    <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add
-        medication</button></a>
-{% else %}
-    <a href="{% url 'new_medication' %}"><button type="button" class="btn btn-primary"><i class="fa-solid fa-plus" style="color: #ffffff;"></i> Add
-        medication</button></a>
-<br><br>
-{% for medication in medications %}
-<div class="card" style="width: 26rem; background-color: white; border: 2px solid; border-color: #708090">
     <div class="card-body">
-        <img src="/media/{{ medication.picture }}" class="medication-picture">
         <div class="row">
-            <div class="col-9">
-                <h5 class="card-title">{{ medication.name_of_medication }}</h5>
+            <div class="col-8">
+                {% for medication in medications %}
+                <div class="card"
+                     style="width: 26rem; background-color: white; border: 2px solid; border-color: #708090">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="/media/{{ medication.picture }}" class="medication-picture">
+                            </div>
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col-9">
+                                        <h5 class="card-title">{{ medication.name_of_medication }}</h5>
+                                    </div>
+                                    <div class="col-3">
+                                        <a href="{% url 'update_medication' medication.id %}"><i
+                                                class="fa-solid fa-pen-to-square"
+                                                style="color: #696969"></i></a>
+                                        <a href="{% url 'delete_medication' medication.id %}"><i
+                                                class="fa-solid fa-trash"
+                                                style="color: #696969"></i></a>
+                                    </div>
+                                </div>
+                                {% if medication.dosage_1 > 0 %}
+                                <div class="row">
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-light"
+                                                style="border: 2px solid; border-color: #708090"><i
+                                                class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+                                    </div>
+                                    <div class="col-9">
+                                        <p style="padding: 5px 0 5px 0">{{ medication.time_1 }} - {{ medication.dosage_1 }} {{ medication.unit_1}} </p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if medication.dosage_2 > 0 %}
+                                <div class="row">
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-light"
+                                                style="border: 2px solid; border-color: #708090"><i
+                                                class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+                                    </div>
+                                    <div class="col-9">
+                                        <p style="padding: 5px 0 5px 0">{{ medication.time_2 }} - {{ medication.dosage_2 }} {{ medication.unit_2}} </p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if medication.dosage_3 > 0 %}
+                                <div class="row">
+                                    <div class="col-3">
+                                        <button type="button" class="btn btn-light"
+                                                style="border: 2px solid; border-color: #708090"><i
+                                                class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+                                    </div>
+                                    <div class="col-9">
+                                        <p style="padding: 5px 0 5px 0">{{ medication.time_3 }} - {{ medication.dosage_3 }} {{ medication.unit_3}} </p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                {% endfor %}
             </div>
-            <div class="col-3">
-                <a href="{% url 'update_medication' medication.id %}"><i class="fa-solid fa-pen-to-square"
-                                                                         style="color: #696969"></i></a>
-                <a href="{% url 'delete_medication' medication.id %}"><i class="fa-solid fa-trash"
-                                                                         style="color: #696969"></i></a>
-            </div>
-        </div>
-        <div class="row">
-            <p>{{ medication.time }} {{ medication.dosage }} {{ medication.unit}} </p>
-        </div>
-        <div class="row">
-            <div class="col-3">
-                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
-                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-            </div>
-            <div class="col-3">
-                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
-                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-            </div>
-            <div class="col-3">
-                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
-                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
-            </div>
-            <div class="col-3">
-                <button type="button" class="btn btn-light" style="border: 2px solid; border-color: #708090"><i
-                        class="fa-solid fa-pills" style="color: #80ceff"></i></button>
+            <div class="col-4">
+                <h5>Hello, {{ user.username }}</h5>
+                <br>
+                <a href="{% url 'new_medication' %}">
+                    <button type="button" class="btn btn-primary"><i class="fa-solid fa-plus"
+                                                                     style="color: #ffffff;"></i> Add medication
+                    </button>
+                </a>
+                <br> <br>
+                <a href="{% url 'logout' %}" class="btn btn-primary"><i class="fa-solid fa-right-from-bracket" style="color: #ffffff;"></i> Logout</a>
             </div>
         </div>
     </div>
 </div>
-<br>
-
-{% endfor %}
+{% else %}
+<a href="{% url 'login' %}">Login</a>
 {% endif %}
 
 {% endblock %}
