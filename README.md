@@ -1,10 +1,8 @@
 # Medication Schedule
 
 
-<hr>
-
 ### Concept 
-Medication Schedule is an intuitive web application designed to medication management. Once logged in, you can schedule and track medication doses and timings. <br> 
+Medication Schedule is a web application designed to medication management. Once logged in, you can schedule and track medication doses and timings. <br> 
 The application is currently in production.
 
 <br>
@@ -31,7 +29,7 @@ The application is currently in production.
 - CSS
 - Bootstrap
 - Fontawesome
-- PythonAnywhere
+
 
 ### Requirements and installation
 <em>Under construction</em>
