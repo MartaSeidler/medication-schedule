@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Medication
-from .forms import MedicationForm
+from .forms import MedicationForm, CreateUserForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 
 @login_required
@@ -43,3 +45,17 @@ def delete_medication(request, id):
         return redirect(all_medications)
 
     return render(request, 'accept.html', {'medication': medication})
+
+def register(request):
+    form = CreateUserForm()
+
+    if request.method == "POST":
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, f"Account created")
+
+            return redirect(all_medications)
+
+    return render(request, 'registration/register.html', {'form': form})
