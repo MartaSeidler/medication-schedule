@@ -14,14 +14,14 @@
             {% csrf_token %}
             {{ form|bootstrap }}
             <br>
-            <button type="submit" class="btn btn-primary" style="float: right;">Login <i class="fa-solid fa-right-to-bracket"></i></button>
+            <button type="submit" class="btn btn-primary">Login <i class="fa-solid fa-right-to-bracket"></i></button>
         </form>
-
+        <br>
         {% for message in messages %}
             <p id="messages">{{ message }}</p>
         {% endfor %}
           
-        <p class="card-text">Don't have an account? <a href="{% url 'register' %} class="card-link">Sign Up</a></p>
+        <p class="card-text">Don't have an account? <a href="{% url 'register' %}">Sign Up</a></p>
       </div>
     </div>
 {% endblock %}

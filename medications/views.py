@@ -53,7 +53,6 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            user = form.cleaned_data.get('username')
             messages.success(request, f"Account created")
 
             return redirect(all_medications)

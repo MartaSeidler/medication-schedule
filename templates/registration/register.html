@@ -10,23 +10,22 @@
     <form method = "POST" action = "">
         {% csrf_token %}
 
-        {{ form.username.label }}
-        {{ form.username }}
+        {{ form.username|bootstrap }}
 
-        {{ form.email.label }}
-        {{ form.email }}
 
-        {{ form.password1.label }}
-        {{ form.password1 }}
+        {{ form.email|bootstrap }}
 
-        {{ form.password2.label }}
-        {{ form.password2 }}
 
-    <input type="submit" name="Create User">
+        {{ form.password1|bootstrap }}
 
-    Already have an account? <a href="{% url 'login' %} class="card-link">Login</a>
 
-    {{ form.errors }}
+        {{ form.password2|bootstrap }}
+        <br>
+        <input type="submit" class="btn btn-primary" name="Create User">
+        <br><br>
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+        <br>
+        {{ form.errors }}
                                  
     </form>
   </div>
