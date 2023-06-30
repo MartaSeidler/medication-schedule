@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Medication
-from .forms import MedicationForm, CreateUserForm
+from .models import Medication, Dose
+from .forms import MedicationForm, CreateUserForm, DoseForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -10,6 +10,23 @@ from django.contrib import messages
 def all_medications(request):
     all = Medication.objects.all()
     return render(request, 'medication.html', {'medications': all})
+
+
+@login_required
+def medication_detail(request, medication):
+    medication = get_object_or_404(Medication, slug=medication)
+    doses = medication.doses.filter(active=True)
+
+    if request.method == 'POST':
+        dose_form = DoseForm(data=request.POST)
+        if dose_form.is_valid():
+            new_dose = dose_form.save(commit=False)
+            new_dose.medication = medication
+            new_dose.save()
+    else:
+        dose_form = DoseForm()
+
+    return render(request, 'detail.html', {'medication': medication, 'doses': doses, 'dose_form': dose_form})
 
 
 @login_required

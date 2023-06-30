@@ -1,0 +1,43 @@
+{% extends 'main.html' %}
+{% load bootstrap %}
+
+{% block title %} {{ medication.name_of_medication }} {% endblock %}
+
+{% block page %}
+
+<div class="card" style="width: 32rem;">
+    <div class="card-body">
+
+{% with doses.count as total_doses %}
+
+    <h3>{{ medication.name_of_medication }}</h3>
+    <h4>{{ total_doses }} raz{{ total_doses|pluralize:"y" }} dziennie:</h4>
+
+{% endwith %}
+
+<ul>
+{% for dose in doses %}
+    <div class="dose">
+        <li>
+            {{ dose.time }} - {{ dose.dosage }} {{ dose.unit }}
+        </li>
+    </div>
+{% empty %}
+    <p>Nie dodano jeszcze żadnych dawek.</p>
+{% endfor %}
+</ul>
+
+{% if new_dose %}
+    <h4>Nowa dawka została dodana.</h4>
+{% else %}
+    <h4>Dodaj kolejną dawkę</h4>
+    <form action="." method="post">
+        {{ dose_form|bootstrap }}
+        {% csrf_token %}
+        <p><input type="submit" value="Dodaj dawkę"></p>
+    </form>
+{% endif %}
+
+    </div>
+</div>
+{% endblock %}
